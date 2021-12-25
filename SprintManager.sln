@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SprintManager.WebApi", "SprintManager.WebApi\SprintManager.WebApi.csproj", "{2FB18EC2-D2E0-4418-8712-F0A0DECA99F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SprintManager.Data", "SprintManager.Data\SprintManager.Data.csproj", "{62EE6E99-4974-47F1-80FC-49D521BB4156}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SprintManager.Models", "SprintManager.Models\SprintManager.Models.csproj", "{E1D76951-5E1E-44BC-8345-71EDDA3D0E72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FB18EC2-D2E0-4418-8712-F0A0DECA99F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FB18EC2-D2E0-4418-8712-F0A0DECA99F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FB18EC2-D2E0-4418-8712-F0A0DECA99F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FB18EC2-D2E0-4418-8712-F0A0DECA99F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62EE6E99-4974-47F1-80FC-49D521BB4156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62EE6E99-4974-47F1-80FC-49D521BB4156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62EE6E99-4974-47F1-80FC-49D521BB4156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62EE6E99-4974-47F1-80FC-49D521BB4156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D76951-5E1E-44BC-8345-71EDDA3D0E72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D76951-5E1E-44BC-8345-71EDDA3D0E72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D76951-5E1E-44BC-8345-71EDDA3D0E72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D76951-5E1E-44BC-8345-71EDDA3D0E72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
