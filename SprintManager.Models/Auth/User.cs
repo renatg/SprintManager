@@ -10,4 +10,5 @@ public class User
     public string email { get; set; }
     public int RoleId { get; set; }
     public virtual Role Role { get; set; }
+    public virtual List<Task> Tasks { get; set; }
 }

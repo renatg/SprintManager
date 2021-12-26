@@ -12,8 +12,6 @@ public class Task
     public int AssigneeId { get; set; }
     public virtual User Assignee { get; set; }
     public int Priority { get; set; }
-    public int AuthorId { get; set; }
-    public virtual User Author { get; set; }
     public int StoryPointEstimate { get; set; }
     public int SprintId { get; set; }
     public virtual Sprint Sprint { get; set; }
