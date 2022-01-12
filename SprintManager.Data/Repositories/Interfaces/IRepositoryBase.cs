@@ -4,7 +4,7 @@ namespace SprintManager.Data.Repositories.Interfaces
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
     {
-        Task<TEntity> GetFirstWhereAsync(Expression<Func<TEntity, bool>> match);
+        Task<TEntity?> GetFirstWhereAsync(Expression<Func<TEntity, bool>> match);
 
         Task<List<TEntity>> FindAllByWhereAsync(Expression<Func<TEntity, bool>> match);
 

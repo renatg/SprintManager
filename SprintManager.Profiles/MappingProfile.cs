@@ -11,7 +11,8 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<User, UserDto>();
+        CreateMap<User, UserDto>().ForMember(x => x.Password, opt => opt.MapFrom(c => c.PasswordHash));
+        CreateMap<UserDto, User>().ForMember(x => x.PasswordHash, opt => opt.MapFrom(c => c.Password));
         CreateMap<Role, RoleDto>();
         CreateMap<Task, TaskDto>();
         CreateMap<Sprint, SprintDto>();

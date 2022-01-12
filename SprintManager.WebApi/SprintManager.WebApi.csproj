@@ -19,11 +19,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\SprintManager.Data\SprintManager.Data.csproj" />
+      <ProjectReference Include="..\SprintManager.Profiles\SprintManager.Profiles.csproj" />
+      <ProjectReference Include="..\SprintManager.Services\SprintManager.Services.csproj" />
     </ItemGroup>
 
 </Project>

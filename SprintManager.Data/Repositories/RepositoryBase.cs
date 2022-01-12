@@ -62,7 +62,7 @@ namespace SprintManager.Data.Repositories
             return await context.Set<TEntity>().AnyAsync(match);
         }
 
-        public virtual async Task<TEntity> GetFirstWhereAsync(Expression<Func<TEntity, bool>> match)
+        public virtual async Task<TEntity?> GetFirstWhereAsync(Expression<Func<TEntity, bool>> match)
         {
             return await context.Set<TEntity>().FirstOrDefaultAsync(match);
         }
