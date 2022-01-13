@@ -1,4 +1,3 @@
-using System.IdentityModel.Tokens.Jwt;
 using SprintManager.DTO.Auth;
 
 namespace SprintManager.Services.Interfaces;
