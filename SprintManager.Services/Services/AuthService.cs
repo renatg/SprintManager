@@ -36,9 +36,9 @@ public class AuthService : IAuthService
         return _mapper.Map<UserDto>(newUser);
     }
 
-    public string? Login(CredentialsDto credentials)
+    public async Task<string?> LoginAsync(CredentialsDto credentials)
     {
-        var identity = GetIdentity(credentials);
+        var identity = await GetIdentityAsync(credentials);
         if (identity == null)
         {
             return null;
@@ -53,18 +53,20 @@ public class AuthService : IAuthService
         return _mapper.Map<List<RoleDto>>(roles);
     }
     
-    private ClaimsIdentity? GetIdentity(CredentialsDto credentials)
+    private async Task<ClaimsIdentity?> GetIdentityAsync(CredentialsDto credentials)
     {
-        var hashedPassword = _userRepository.GetFirstWhereAsync(x =>
-            x.Login == credentials.Login).Result?.PasswordHash;
+        var user = await _userRepository.GetFirstWhereAsync(x =>
+            x.Login == credentials.Login);
         
-        if (hashedPassword == null || !VerifyHashedPassword(hashedPassword, credentials.Password))
+        if (user == null || !VerifyHashedPassword(user.PasswordHash, credentials.Password))
             return null;
             
         var claims = new List<Claim>
         {
             new Claim(ClaimsIdentity.DefaultNameClaimType, credentials.Login),
         };
+        
+        claims.Add(new Claim("role", user.Role.Name));
             
         ClaimsIdentity claimsIdentity =
             new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,

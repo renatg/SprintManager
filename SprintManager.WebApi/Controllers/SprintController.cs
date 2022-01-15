@@ -1,7 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SprintManager.DTO;
 using SprintManager.Services.Interfaces;
-using SprintManager.Services.Services;
 
 namespace SprintManager.WebApi.Controllers;
 
@@ -17,6 +17,7 @@ public class SprintController : ControllerBase
     
     [HttpGet]
     [Route("[controller]/getActive")]
+    [Authorize]
     public async Task<SprintDto> GetActiveAsync()
     {
         return await _sprintService.GetActiveSprintAsync();
@@ -24,6 +25,7 @@ public class SprintController : ControllerBase
 
     [HttpGet]
     [Route("[controller]/getAll")]
+    [Authorize]
     public async Task<IEnumerable<SprintDto>> GetAllAsync()
     {
         return await _sprintService.GetAllSprintsAsync();
@@ -31,6 +33,7 @@ public class SprintController : ControllerBase
 
     [HttpPost]
     [Route("[controller]/create")]
+    [Authorize(Roles = "Project manager")]
     public async Task<SprintDto> CreateAsync(SprintDto sprintDto)
     {
         return await _sprintService.CreateAsync(sprintDto);
@@ -38,6 +41,7 @@ public class SprintController : ControllerBase
 
     [HttpPut]
     [Route("[controller]/edit")]
+    [Authorize(Roles = "Project manager")]
     public async Task<SprintDto> EditAsync(SprintDto sprintDto)
     {
         return await _sprintService.EditAsync(sprintDto);
@@ -45,6 +49,7 @@ public class SprintController : ControllerBase
 
     [HttpPut]
     [Route("[controller]/start")]
+    [Authorize(Roles = "Project manager")]
     public async Task<SprintDto> StartAsync(int sprintId)
     {
         return await _sprintService.StartAsync(sprintId);
@@ -52,6 +57,7 @@ public class SprintController : ControllerBase
     
     [HttpPut]
     [Route("[controller]/stop")]
+    [Authorize(Roles = "Project manager")]
     public async Task<SprintDto> StopAsync(int sprintId)
     {
         return await _sprintService.StopAsync(sprintId);

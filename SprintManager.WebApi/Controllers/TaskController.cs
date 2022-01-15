@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SprintManager.DTO;
+using SprintManager.Models.Auth;
 using SprintManager.Services.Interfaces;
 
 namespace SprintManager.WebApi.Controllers;
@@ -16,6 +18,7 @@ public class TaskController : ControllerBase
 
     [HttpGet]
     [Route("[controller]/getBackLog")]
+    [Authorize]
     public async Task<IEnumerable<TaskDto>> GetBackLogAsync()
     {
         return await _taskService.GetAllTasksAsync();
@@ -23,6 +26,7 @@ public class TaskController : ControllerBase
 
     [HttpGet]
     [Route("[controller]/getAllTasksBySprint")]
+    [Authorize]
     public async Task<IEnumerable<TaskDto>> GetAllTasksBySprint(int sprintId)
     {
         return await _taskService.GetAllTasksBySprintAsync(sprintId);
@@ -30,6 +34,7 @@ public class TaskController : ControllerBase
 
     [HttpPost]
     [Route("[controller]/create")]
+    [Authorize]
     public async Task<TaskDto> CreateTaskAsync(TaskDto taskDto)
     {
         return await _taskService.CreateAsync(taskDto);
@@ -37,6 +42,7 @@ public class TaskController : ControllerBase
     
     [HttpPut]
     [Route("[controller]/edit")]
+    [Authorize]
     public async Task<TaskDto> EditTaskAsync(TaskDto taskDto)
     {
         return await _taskService.EditAsync(taskDto);
@@ -44,6 +50,7 @@ public class TaskController : ControllerBase
     
     [HttpPost]
     [Route("[controller]/changeStatus")]
+    [Authorize(Roles = "Developer")]
     public async Task<TaskDto> ChangeStatusAsync(TaskStatusDto taskStatusDto)
     {
         return await _taskService.ChangeStatusAsync(taskStatusDto);
@@ -51,6 +58,7 @@ public class TaskController : ControllerBase
     
     [HttpPost]
     [Route("[controller]/changePriority")]
+    [Authorize(Roles = "Developer, Project manager")]
     public async Task<TaskDto> ChangePriorityAsync(TaskPriorityDto taskPriorityDto)
     {
         return await _taskService.ChangePriorityAsync(taskPriorityDto);
@@ -58,6 +66,7 @@ public class TaskController : ControllerBase
 
     [HttpPut]
     [Route("[controller]/addToSprint")]
+    [Authorize(Roles = "Project manager")]
     public async Task<TaskDto> AddToSprintAsync(TaskToSprintDto taskToSprintDto)
     {
         return await _taskService.AddToSprintAsync(taskToSprintDto);

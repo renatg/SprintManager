@@ -1,4 +1,5 @@
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SprintManager.DTO.Auth;
 using SprintManager.Services.Interfaces;
@@ -33,9 +34,9 @@ public class AuthorizationController : ControllerBase
 
     [HttpPost]
     [Route("[controller]/login")]
-    public IActionResult Login([FromBody] CredentialsDto credentialsDto)
+    public async Task<IActionResult> LoginAsync([FromBody] CredentialsDto credentialsDto)
     {
-        var jwt = _authService.Login(credentialsDto);
+        var jwt = await _authService.LoginAsync(credentialsDto);
         if (jwt == null)
         {
             return BadRequest(new { errorText = "Invalid username or password." });
@@ -46,6 +47,7 @@ public class AuthorizationController : ControllerBase
 
     [HttpGet]
     [Route("[controller]/GetAllRoles")]
+    [Authorize(Roles = "Project manager")]
     public IEnumerable<RoleDto> GetAllRoles()
     {
         return _authService.GetAllRolesAsync().Result;
