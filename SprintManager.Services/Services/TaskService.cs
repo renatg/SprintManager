@@ -29,7 +29,7 @@ public class TaskService : ITaskService
         return await UpdateTaskAsync(task);
     }
 
-    public async Task<TaskDto> ChangeStatus(TaskStatusDto taskStatusDto)
+    public async Task<TaskDto> ChangeStatusAsync(TaskStatusDto taskStatusDto)
     {
         var task = await _taskRepository.GetFirstWhereAsync(x => x.Id == taskStatusDto.TaskId);
         if (task == null)
@@ -39,7 +39,7 @@ public class TaskService : ITaskService
         return await UpdateTaskAsync(task);
     }
 
-    public async Task<TaskDto> ChangePriority(TaskPriorityDto taskPriorityDto)
+    public async Task<TaskDto> ChangePriorityAsync(TaskPriorityDto taskPriorityDto)
     {
         var task = await _taskRepository.GetFirstWhereAsync(x => x.Id == taskPriorityDto.TaskId);
         if (task == null)
@@ -49,13 +49,19 @@ public class TaskService : ITaskService
         return await UpdateTaskAsync(task);
     }
 
-    public async Task<List<TaskDto>> GetAllTasks()
+    public async Task<List<TaskDto>> GetAllTasksAsync()
     {
         var tasks = await _taskRepository.GetAllAsync();
         return _mapper.Map<List<TaskDto>>(tasks);
     }
 
-    public async Task<TaskDto> AddToSprint(TaskToSprintDto taskToSprintDto)
+    public async Task<List<TaskDto>> GetAllTasksBySprintAsync(int sprintId)
+    {
+        var tasks = await _taskRepository.FindAllByWhereAsync(x => x.SprintId == sprintId);
+        return _mapper.Map<List<TaskDto>>(tasks);
+    }
+
+    public async Task<TaskDto> AddToSprintAsync(TaskToSprintDto taskToSprintDto)
     {
         var task = await _taskRepository.GetFirstWhereAsync(x => x.Id == taskToSprintDto.TaskId);
         if (task == null)

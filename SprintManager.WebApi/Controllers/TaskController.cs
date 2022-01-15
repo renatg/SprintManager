@@ -18,7 +18,14 @@ public class TaskController : ControllerBase
     [Route("[controller]/getBackLog")]
     public async Task<IEnumerable<TaskDto>> GetBackLogAsync()
     {
-        return await _taskService.GetAllTasks();
+        return await _taskService.GetAllTasksAsync();
+    }
+
+    [HttpGet]
+    [Route("[controller]/getAllTasksBySprint")]
+    public async Task<IEnumerable<TaskDto>> GetAllTasksBySprint(int sprintId)
+    {
+        return await _taskService.GetAllTasksBySprintAsync(sprintId);
     }
 
     [HttpPost]
@@ -39,13 +46,20 @@ public class TaskController : ControllerBase
     [Route("[controller]/changeStatus")]
     public async Task<TaskDto> ChangeStatusAsync(TaskStatusDto taskStatusDto)
     {
-        return await _taskService.ChangeStatus(taskStatusDto);
+        return await _taskService.ChangeStatusAsync(taskStatusDto);
     }
     
     [HttpPost]
     [Route("[controller]/changePriority")]
     public async Task<TaskDto> ChangePriorityAsync(TaskPriorityDto taskPriorityDto)
     {
-        return await _taskService.ChangePriority(taskPriorityDto);
+        return await _taskService.ChangePriorityAsync(taskPriorityDto);
+    }
+
+    [HttpPut]
+    [Route("[controller]/addToSprint")]
+    public async Task<TaskDto> AddToSprintAsync(TaskToSprintDto taskToSprintDto)
+    {
+        return await _taskService.AddToSprintAsync(taskToSprintDto);
     }
 }

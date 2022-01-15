@@ -7,4 +7,5 @@ public class SprintDto
     public DateTime StartData { get; set; }
     public DateTime EndDate { get; set; }
     public string Purpose { get; set; }
+    public bool Active { get; set; }
 }

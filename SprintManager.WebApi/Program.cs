@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SprintManager.Data;
 using SprintManager.Data.Repositories;
 using SprintManager.Data.Repositories.Interfaces;
+using SprintManager.Models;
 using SprintManager.Services.Interfaces;
 using SprintManager.Services.Services;
 using SprintManager.WebApi.AppStart;
@@ -17,6 +18,7 @@ builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<ISprintRepository, SprintRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<ISprintService, SprintService>();
 
 builder.Services.AddControllers();
 builder.Services.AddAutoMapperCustom();

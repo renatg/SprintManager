@@ -17,5 +17,6 @@ public class MappingProfile : Profile
         CreateMap<Task, TaskDto>();
         CreateMap<TaskDto, Task>();
         CreateMap<Sprint, SprintDto>();
+        CreateMap<SprintDto, Sprint>();
     }
 }
