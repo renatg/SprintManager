@@ -5,7 +5,7 @@ namespace SprintManager.WebApi.AppStart
 {
     public static class AutoMapperServiceExtension
     {
-        public static void AddAutoMapperCustom(this IServiceCollection services)
+        public static IServiceCollection AddAutoMapperCustom(this IServiceCollection services)
         {
             var mappingConfig = new MapperConfiguration(mc =>
             {
@@ -14,6 +14,8 @@ namespace SprintManager.WebApi.AppStart
 
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
+
+            return services;
         }
     }
 }
