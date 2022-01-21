@@ -1,5 +1,4 @@
 using System.Net;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SprintManager.DTO.Auth;
 using SprintManager.Services.Interfaces;
@@ -47,7 +46,6 @@ public class AuthorizationController : ControllerBase
 
     [HttpGet]
     [Route("[controller]/GetAllRoles")]
-    [Authorize(Roles = "Project manager")]
     public IEnumerable<RoleDto> GetAllRoles()
     {
         return _authService.GetAllRolesAsync().Result;
