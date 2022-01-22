@@ -6,6 +6,7 @@ using SprintManager.Services.Interfaces;
 namespace SprintManager.WebApi.Controllers;
 
 [ApiController]
+[Route("api")]
 public class AuthorizationController : ControllerBase
 {
     private readonly IAuthService _authService;

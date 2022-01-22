@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SprintManager.DTO;
-using SprintManager.Models.Auth;
 using SprintManager.Services.Interfaces;
 
 namespace SprintManager.WebApi.Controllers;
 
 [ApiController]
+[Route("api")]
 public class TaskController : ControllerBase
 {
     private readonly ITaskService _taskService;

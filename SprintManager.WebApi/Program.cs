@@ -29,18 +29,26 @@ else
 
 app.UseCors("CorsPolicy")
     .UseHttpsRedirection()
+    .UseStaticFiles()
+    .UseRouting()
     .UseAuthentication()
     .UseAuthorization();
 
 app.MapControllers();
 
-app.UseSpa(spa =>
-{
-    spa.Options.SourcePath = "ClientApp";
-    if (app.Environment.IsDevelopment())
+app.MapWhen(
+    context => !context.Request.Path.StartsWithSegments("/api", StringComparison.OrdinalIgnoreCase),
+    cfg =>
     {
-        spa.UseAngularCliServer(npmScript: "start");
+        cfg.UseSpa(spa =>
+        {
+            spa.Options.SourcePath = "ClientApp";
+            if (app.Environment.IsDevelopment())
+            {
+                spa.UseAngularCliServer(npmScript: "start");
+            }
+        });
     }
-});
+);
 
 app.Run();

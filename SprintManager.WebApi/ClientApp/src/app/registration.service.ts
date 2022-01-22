@@ -6,7 +6,7 @@ import { Role } from './registration/registration.component';
   providedIn: 'root'
 })
 export class RegistrationService {
-  private url = 'https://localhost:7209/Authorization/GetAllRoles';
+  private url = '/api/Authorization/GetAllRoles';
 
   constructor(private http: HttpClient) { }
 
