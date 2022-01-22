@@ -1,0 +1,18 @@
+<div class="card">
+    <p-card header="Login">
+        <div class="form">
+            <span class="p-float-label">
+                <input id="float-input" type="text" pInputText [(ngModel)]="login">
+                <label for="float-input">Username</label>
+            </span>
+
+            <span class="p-float-label">
+                <p-password [(ngModel)]="password" [feedback]="false"></p-password>
+                <label for="float-input">Password</label>
+            </span>
+
+            <button pButton type="button" label="LogIn" class="p-button-success"></button>
+            <button pButton type="button" label="SignUp" class="p-button-secondary"></button>
+        </div>
+    </p-card>
+</div>

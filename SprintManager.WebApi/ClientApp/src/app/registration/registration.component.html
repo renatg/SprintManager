@@ -1,0 +1,25 @@
+<div class="card">
+    <p-card header="SignUp">
+        <div class="form">
+            <span class="p-float-label">
+                <input id="float-input" type="text" pInputText [(ngModel)]="login">
+                <label for="float-input">Username</label>
+            </span>
+
+            <span class="p-float-label">
+                <p-password [(ngModel)]="password" [toggleMask]="true" class="password"></p-password>
+                <label for="float-input">Password</label>
+            </span>
+
+            <span class="p-float-label">
+                <input id="float-input" type="text" pInputText [(ngModel)]="email">
+                <label for="float-input">Email</label>
+            </span>
+
+            <p-dropdown [options]="roles" [(ngModel)]="selectedRole" placeholder="Select a Role" optionLabel="name"
+                    [showClear]="true"></p-dropdown>
+            
+            <button pButton type="button" label="Registration" class="p-button-success"></button>
+        </div>
+    </p-card>
+</div>
