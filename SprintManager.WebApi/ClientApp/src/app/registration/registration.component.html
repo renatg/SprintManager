@@ -1,25 +1,31 @@
 <div class="card">
     <p-card header="SignUp">
         <div class="form">
-            <span class="p-float-label">
-                <input id="float-input" type="text" pInputText [(ngModel)]="login">
-                <label for="float-input">Username</label>
-            </span>
+            <form #form="ngForm" novalidate>
+                <span class="p-float-label">
+                    <input id="login" name="login" type="text" pInputText [(ngModel)]="user.login"
+                           #login="ngModel" required minlength="3" loginUnique/>
+                    <label for="login">Username</label>
+                    <small id="login-help" class="p-error block" *ngIf="login.errors?.['userNotUnique']">Username is not available.</small>
+                    <small id="login-min" class="p-error block" *ngIf="login.errors?.['minlength']">Login must be at least 3 characters long.</small>
+                </span>
 
-            <span class="p-float-label">
-                <p-password [(ngModel)]="password" [toggleMask]="true" class="password"></p-password>
-                <label for="float-input">Password</label>
-            </span>
+                <span class="p-float-label">
+                    <p-password id="password" name="password"  [(ngModel)]="user.password" [toggleMask]="true" class="password " required></p-password>
+                    <label for="password">Password</label>
+                </span>
 
-            <span class="p-float-label">
-                <input id="float-input" type="text" pInputText [(ngModel)]="email">
-                <label for="float-input">Email</label>
-            </span>
+                <span class="p-float-label">
+                    <input id="email" name="email" type="text" pInputText #email="ngModel" [(ngModel)]="user.email" required email>
+                    <label for="email">Email</label>
+                    <small id="email-error" class="p-error block" *ngIf="email.errors?.['email']">Incorrect Email.</small>
+                </span>
 
-            <p-dropdown [options]="roles" [(ngModel)]="selectedRole" placeholder="Select a Role" optionLabel="name"
-                    [showClear]="true"></p-dropdown>
-            
-            <button pButton type="button" label="Registration" class="p-button-success"></button>
+                <p-dropdown name="roles" [options]="roles" [(ngModel)]="selectedRole" placeholder="Select a Role" optionLabel="name"
+                        [showClear]="true" [required]="true"></p-dropdown>
+
+                <button pButton type="button" label="Registration" class="p-button-success" [disabled]="form.invalid" ></button>
+            </form>
         </div>
     </p-card>
 </div>

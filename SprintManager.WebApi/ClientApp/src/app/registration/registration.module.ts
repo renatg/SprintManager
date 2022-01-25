@@ -7,9 +7,13 @@ import {PasswordModule} from 'primeng/password';
 import {ButtonModule} from 'primeng/button';
 import { RegistrationComponent } from './registration.component';
 import {DropdownModule} from 'primeng/dropdown';
+import {LoginUniqueValidatorDirective} from "../directives/login-unique-validator.directive";
 
 @NgModule({
-  declarations: [RegistrationComponent],
+  declarations: [
+    RegistrationComponent,
+    LoginUniqueValidatorDirective
+  ],
   imports: [
     CommonModule,
     CardModule,

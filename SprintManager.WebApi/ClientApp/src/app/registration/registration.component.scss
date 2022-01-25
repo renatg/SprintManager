@@ -1,18 +1,37 @@
 .card {
     width: 20rem;
-    margin: auto; 
-    margin-top: 5rem;
+    margin: auto;
+    margin-top: 7rem;
 }
 
 .form {
     margin-left: 3em;
 }
 
-span {
+span{
     margin-bottom: 2em;
     width: 70px;
 }
 
+small {
+  white-space: nowrap;
+}
+
 button {
     margin-top: 2em;
+}
+
+.p-float-label * {
+  display: block;
+}
+
+.sizes {
+  .p-inputtext {
+    display: block;
+    margin-bottom: .5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }

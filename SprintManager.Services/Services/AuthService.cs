@@ -52,7 +52,13 @@ public class AuthService : IAuthService
         var roles = await _roleRepository.GetAllAsync();
         return _mapper.Map<List<RoleDto>>(roles);
     }
-    
+
+    public async Task<bool> CheckLoginUnique(string login)
+    {
+        var loginExist = await _userRepository.AnyAsync(x => x.Login == login);
+        return !loginExist;
+    }
+
     private async Task<ClaimsIdentity?> GetIdentityAsync(CredentialsDto credentials)
     {
         var user = await _userRepository.GetFirstWhereAsync(x =>

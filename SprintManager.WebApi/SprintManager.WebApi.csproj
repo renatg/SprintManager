@@ -26,4 +26,8 @@
       <ProjectReference Include="..\SprintManager.Services\SprintManager.Services.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ClientApp\src\app\directives" />
+    </ItemGroup>
+
 </Project>

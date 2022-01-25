@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RegistrationService } from '../registration.service';
+import { User } from '../models/auth/user.model';
+import {NgForm} from "@angular/forms";
+import { AuthorizationService } from '../services/authorization.service';
 
-export interface Role {
+export interface IRole {
   name: string,
   id: number
 }
@@ -13,13 +15,13 @@ export interface Role {
 })
 export class RegistrationComponent implements OnInit {
 
-  login: string;
-  password: string;
-  email: string;
-  roles: Role[];
-  selectedRole: Role;
+  user: User;
+  roles: IRole[];
+  selectedRole: IRole;
 
-  constructor(private registrationService: RegistrationService) { }
+  constructor(private registrationService: AuthorizationService) {
+    this.user = new User();
+  }
 
   ngOnInit(): void {
     this.getRoles();
@@ -27,6 +29,11 @@ export class RegistrationComponent implements OnInit {
 
   getRoles() {
     this.registrationService.getRoles().subscribe(roles => this.roles = roles);
+  }
+
+  onSubmit(form: NgForm) {
+      this.user.roleId = this.selectedRole.id;
+      this.registrationService.registration(this.user)?.subscribe();
   }
 
 }

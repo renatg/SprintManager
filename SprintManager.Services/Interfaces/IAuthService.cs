@@ -7,4 +7,6 @@ public interface IAuthService
     Task<UserDto> RegistrationAsync(UserDto userDto);
     Task<string?> LoginAsync(CredentialsDto credentials);
     Task<List<RoleDto>> GetAllRolesAsync();
+
+    Task<bool> CheckLoginUnique(string login);
 }

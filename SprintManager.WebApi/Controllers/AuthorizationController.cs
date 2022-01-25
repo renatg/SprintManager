@@ -6,7 +6,7 @@ using SprintManager.Services.Interfaces;
 namespace SprintManager.WebApi.Controllers;
 
 [ApiController]
-[Route("api")]
+[Route("api/[controller]")]
 public class AuthorizationController : ControllerBase
 {
     private readonly IAuthService _authService;
@@ -17,7 +17,7 @@ public class AuthorizationController : ControllerBase
     }
     
     [HttpPost]
-    [Route("[controller]/registration")]
+    [Route("registration")]
     public async Task<IActionResult> Registration([FromBody] UserDto userDto)
     {
         try
@@ -33,7 +33,7 @@ public class AuthorizationController : ControllerBase
     }
 
     [HttpPost]
-    [Route("[controller]/login")]
+    [Route("login")]
     public async Task<IActionResult> LoginAsync([FromBody] CredentialsDto credentialsDto)
     {
         var jwt = await _authService.LoginAsync(credentialsDto);
@@ -46,9 +46,16 @@ public class AuthorizationController : ControllerBase
     }
 
     [HttpGet]
-    [Route("[controller]/GetAllRoles")]
+    [Route("GetAllRoles")]
     public IEnumerable<RoleDto> GetAllRoles()
     {
         return _authService.GetAllRolesAsync().Result;
+    }
+
+    [HttpGet]
+    [Route("checkLoginUnique")]
+    public async Task<bool> CheckLoginUnique(string login)
+    {
+        return await _authService.CheckLoginUnique(login);
     }
 }
