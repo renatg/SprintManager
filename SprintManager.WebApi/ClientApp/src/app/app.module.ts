@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
-import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginModule } from './login/login.module';
+import { LoginModule } from './components/login/login.module';
 import { RegistrationComponent } from './registration/registration.component';
 import { RegistrationModule } from './registration/registration.module';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent },

@@ -24,14 +24,3 @@ button {
 .p-float-label * {
   display: block;
 }
-
-.sizes {
-  .p-inputtext {
-    display: block;
-    margin-bottom: .5rem;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}

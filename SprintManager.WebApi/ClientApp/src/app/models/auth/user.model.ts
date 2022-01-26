@@ -1,5 +1,3 @@
-import {IRole} from "../../registration/registration.component";
-
 export interface IUserDto {
   login: string;
   password: string;
