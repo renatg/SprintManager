@@ -1,5 +1,6 @@
+<p-toast position="top-center"></p-toast>
 <div class="card">
-  <p-card header="Authorization">
+  <p-card header="SignIn">
     <div class="form">
       <form #form="ngForm" novalidate>
         <span class="p-float-label">
@@ -13,7 +14,7 @@
             <label for="password">Password</label>
         </span>
 
-        <button pButton type="button" label="Login" class="p-button-success" [disabled]="form.invalid" ></button>
+        <button pButton type="button" label="Login" class="p-button-success" [disabled]="form.invalid" (click)="loginUser()"></button>
       </form>
     </div>
   </p-card>

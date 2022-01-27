@@ -4,36 +4,36 @@ import {NgForm} from "@angular/forms";
 import { AuthorizationService } from '../services/authorization.service';
 
 export interface IRole {
-  name: string,
-  id: number
+    name: string,
+    id: number
 }
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+    selector: 'app-registration',
+    templateUrl: './registration.component.html',
+    styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
 
-  user: User;
-  roles: IRole[];
-  selectedRole: IRole;
+    user: User;
+    roles: IRole[];
+    selectedRole: IRole;
 
-  constructor(private registrationService: AuthorizationService) {
-    this.user = new User();
-  }
+    constructor(private registrationService: AuthorizationService) {
+        this.user = new User();
+    }
 
-  ngOnInit(): void {
-    this.getRoles();
-  }
+    ngOnInit(): void {
+        this.getRoles();
+    }
 
-  getRoles() {
-    this.registrationService.getRoles().subscribe(roles => this.roles = roles);
-  }
+    getRoles() {
+        this.registrationService.getRoles().subscribe(roles => this.roles = roles);
+    }
 
-  onSubmit(form: NgForm) {
-      this.user.roleId = this.selectedRole.id;
-      this.registrationService.registration(this.user)?.subscribe();
-  }
+    register() {
+        this.user.roleId = this.selectedRole.id;
+        this.registrationService.registration(this.user)?.subscribe();
+    }
 
 }

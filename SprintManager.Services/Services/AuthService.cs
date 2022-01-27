@@ -36,7 +36,7 @@ public class AuthService : IAuthService
         return _mapper.Map<UserDto>(newUser);
     }
 
-    public async Task<string?> LoginAsync(CredentialsDto credentials)
+    public async Task<JwtDto?> LoginAsync(CredentialsDto credentials)
     {
         var identity = await GetIdentityAsync(credentials);
         if (identity == null)
@@ -44,7 +44,7 @@ public class AuthService : IAuthService
             return null;
         }
 
-        return GetJwt(identity);
+        return new JwtDto { JWT = GetJwt(identity) };
     }
 
     public async Task<List<RoleDto>> GetAllRolesAsync()

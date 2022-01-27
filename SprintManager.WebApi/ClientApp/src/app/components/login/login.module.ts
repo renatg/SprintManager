@@ -6,16 +6,19 @@ import {FormsModule} from "@angular/forms";
 import {PasswordModule} from "primeng/password";
 import {ButtonModule} from "primeng/button";
 import {LoginComponent} from "./login.component";
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
-  declarations: [LoginComponent],
-  imports: [
-    CommonModule,
-    CardModule,
-    InputTextModule,
-    FormsModule,
-    PasswordModule,
-    ButtonModule,
-  ]
+    declarations: [LoginComponent],
+    imports: [
+        CommonModule,
+        CardModule,
+        InputTextModule,
+        FormsModule,
+        PasswordModule,
+        ButtonModule,
+        ToastModule
+    ]
 })
+
 export class LoginModule { }

@@ -36,13 +36,13 @@ public class AuthorizationController : ControllerBase
     [Route("login")]
     public async Task<IActionResult> LoginAsync([FromBody] CredentialsDto credentialsDto)
     {
-        var jwt = await _authService.LoginAsync(credentialsDto);
-        if (jwt == null)
+        var jwtDto = await _authService.LoginAsync(credentialsDto);
+        if (jwtDto == null)
         {
             return BadRequest(new { errorText = "Invalid username or password." });
         }
 
-        return Ok(jwt);
+        return Ok(jwtDto);
     }
 
     [HttpGet]

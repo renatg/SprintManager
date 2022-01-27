@@ -24,7 +24,7 @@
                 <p-dropdown name="roles" [options]="roles" [(ngModel)]="selectedRole" placeholder="Select a Role" optionLabel="name"
                         [showClear]="true" [required]="true"></p-dropdown>
 
-                <button pButton type="button" label="Registration" class="p-button-success" [disabled]="form.invalid" ></button>
+                <button pButton type="button" label="Registration" class="p-button-success" [disabled]="form.invalid" (click)="register()"></button>
             </form>
         </div>
     </p-card>
