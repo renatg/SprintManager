@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/auth/user.model';
-import {NgForm} from "@angular/forms";
-import { AuthorizationService } from '../services/authorization.service';
+import { User } from '../../models/auth/user.model';
+import { AuthorizationService } from '../../services/authorization.service';
 
 export interface IRole {
     name: string,

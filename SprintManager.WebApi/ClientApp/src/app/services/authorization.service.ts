@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, map, tap} from 'rxjs/operators';
-import {Observable, of} from "rxjs";
-import {BaseService} from "./base.service";
-import { IRole } from '../registration/registration.component';
-import {IUserDto, User } from '../models/auth/user.model';
-import {Credentials} from "../models/auth/credentials.model";
-import {JwtHelperService} from "@auth0/angular-jwt";
-import {JwtModel} from "../models/auth/jwt.model";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, of } from "rxjs";
+import { BaseService } from "./base.service";
+import { IRole } from '../components/registration/registration.component';
+import { IUserDto, User } from '../models/auth/user.model';
+import { Credentials } from "../models/auth/credentials.model";
+import { JwtHelperService } from "@auth0/angular-jwt";
+import { JwtModel } from "../models/auth/jwt.model";
 
 @Injectable({
   providedIn: 'root'
