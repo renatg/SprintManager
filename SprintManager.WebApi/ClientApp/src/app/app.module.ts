@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from "./guards/auth.guard";
 import { JwtModule } from "@auth0/angular-jwt";
+import { ToastModule } from 'primeng/toast';
+import {MessagesModule} from 'primeng/messages';
 
 const appRoutes: Routes = [
   { path: '', component: AppComponent, canActivate: [AuthGuard] },
@@ -40,6 +42,8 @@ export function tokenGetter() {
         LoginModule,
         RegistrationModule,
         HttpClientModule,
+        ToastModule,
+        MessagesModule,
         RouterModule.forRoot(appRoutes),
         JwtModule.forRoot({
             config :{

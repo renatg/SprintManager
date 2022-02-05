@@ -6,7 +6,6 @@ import { FormsModule } from "@angular/forms";
 import { PasswordModule } from "primeng/password";
 import { ButtonModule } from "primeng/button";
 import { LoginComponent } from "./login.component";
-import { ToastModule } from 'primeng/toast';
 
 @NgModule({
     declarations: [LoginComponent],
@@ -16,8 +15,7 @@ import { ToastModule } from 'primeng/toast';
         InputTextModule,
         FormsModule,
         PasswordModule,
-        ButtonModule,
-        ToastModule
+        ButtonModule
     ]
 })
 

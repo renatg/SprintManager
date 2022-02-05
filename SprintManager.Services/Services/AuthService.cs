@@ -28,12 +28,11 @@ public class AuthService : IAuthService
         _roleRepository = roleRepository;
         _mapper = mapper;
     }
-    public async Task<UserDto> RegistrationAsync(UserDto userDto)
+    public async Task RegistrationAsync(UserDto userDto)
     {
         userDto.Password = HashPassword(userDto.Password);
         var user = _mapper.Map<User>(userDto);
-        var newUser = await _userRepository.InsertAsync(user);
-        return _mapper.Map<UserDto>(newUser);
+        await _userRepository.InsertAsync(user);
     }
 
     public async Task<JwtDto?> LoginAsync(CredentialsDto credentials)

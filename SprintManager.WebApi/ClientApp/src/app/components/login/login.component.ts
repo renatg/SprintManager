@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Credentials } from "../../models/auth/credentials.model";
 import { AuthorizationService } from "../../services/authorization.service";
 import { Router } from "@angular/router";
-import { MessageService } from 'primeng/api';
+import { MessageService } from '../../services/message.service';
 
 @Component({
     selector: 'app-login',
@@ -26,14 +26,16 @@ export class LoginComponent implements OnInit {
             if (res) {
                 this.router.navigate(['/']);
             }
-
-            this.errorMessage = this.authorizationService.ErrorMessage;
-            this.showError(this.errorMessage);
+            else {
+                this.errorMessage = this.authorizationService.ErrorMessage;
+                if (this.errorMessage) {
+                    this.messageService.showError(this.errorMessage);
+                }
+            }
         });
     }
 
-    showError(error: string) {
-        console.log(error);
-        this.messageService.add({severity:'error', summary: error});
+    signUp() {
+        this.router.navigate(['signup']);
     }
 }

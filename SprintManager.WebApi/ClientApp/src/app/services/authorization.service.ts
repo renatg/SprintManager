@@ -28,14 +28,16 @@ export class AuthorizationService extends BaseService {
         return this.http.get<IRole[]>(this.url+'GetAllRoles');
     }
 
-    registration(user: User) : Observable<User> | null {
+    registration(user: User) {
         return this.http
-        .post<IUserDto>(this.url + 'registration', user, {headers: AuthorizationService.headers})
-        .pipe(
-            map(z => {
-                return User.fromDto(z)
-            }),
-            catchError(this.handleError));
+            .post(this.url + 'registration', user, {headers: AuthorizationService.headers})
+            .pipe(
+                catchError((err, caught) => {
+                    this.ErrorMessage = err.error;
+                    this.handleError(err);
+                    return of(false);
+                })
+            );
     }
 
     checkLoginUnique(login: string) : Observable<boolean> {
@@ -49,7 +51,6 @@ export class AuthorizationService extends BaseService {
     }
 
     login(credentials: Credentials): Observable<boolean> {
-
         return this.http
             .post<JwtModel>(this.url + 'login', credentials)
             .pipe(

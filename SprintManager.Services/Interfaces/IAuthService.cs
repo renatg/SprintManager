@@ -4,7 +4,7 @@ namespace SprintManager.Services.Interfaces;
 
 public interface IAuthService
 {
-    Task<UserDto> RegistrationAsync(UserDto userDto);
+    Task RegistrationAsync(UserDto userDto);
     Task<JwtDto?> LoginAsync(CredentialsDto credentials);
     Task<List<RoleDto>> GetAllRolesAsync();
 

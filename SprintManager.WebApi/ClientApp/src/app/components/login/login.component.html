@@ -1,21 +1,21 @@
-<p-toast position="top-center"></p-toast>
 <div class="card">
-  <p-card header="SignIn">
-    <div class="form">
-      <form #form="ngForm" novalidate>
-        <span class="p-float-label">
-            <input id="login" name="login" type="text" pInputText [(ngModel)]="credential.login"
-                   #login="ngModel" required />
-            <label for="login">Username</label>
-        </span>
+    <p-card header="SignIn">
+        <div class="form">
+            <form #form="ngForm" novalidate>
+                <span class="p-float-label">
+                    <input id="login" name="login" type="text" pInputText [(ngModel)]="credential.login"
+                           #login="ngModel" required />
+                    <label for="login">Username</label>
+                </span>
 
-        <span class="p-float-label">
-            <p-password id="password" name="password" [(ngModel)]="credential.password" class="password" [feedback]="false" required></p-password>
-            <label for="password">Password</label>
-        </span>
+                <span class="p-float-label">
+                    <p-password id="password" name="password" [(ngModel)]="credential.password" class="password" [feedback]="false" required></p-password>
+                    <label for="password">Password</label>
+                </span>
 
-        <button pButton type="button" label="Login" class="p-button-success" [disabled]="form.invalid" (click)="loginUser()"></button>
-      </form>
-    </div>
-  </p-card>
+                <button pButton type="button" label="LogIn" class="p-button-success" [disabled]="form.invalid" (click)="loginUser()"></button>
+                <p-button label="SignUp" styleClass="p-button-link" (click)="signUp()"></p-button>
+            </form>
+        </div>
+    </p-card>
 </div>
