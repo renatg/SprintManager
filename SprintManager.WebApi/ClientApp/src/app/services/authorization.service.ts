@@ -19,16 +19,17 @@ export class AuthorizationService extends BaseService {
     });
 
     public ErrorMessage = "";
+    public UserName: string;
 
     constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {
         super();
     }
 
-    getRoles() {
+    public getRoles() {
         return this.http.get<IRole[]>(this.url+'GetAllRoles');
     }
 
-    registration(user: User) {
+    public registration(user: User) {
         return this.http
             .post(this.url + 'registration', user, {headers: AuthorizationService.headers})
             .pipe(
@@ -40,7 +41,7 @@ export class AuthorizationService extends BaseService {
             );
     }
 
-    checkLoginUnique(login: string) : Observable<boolean> {
+    public checkLoginUnique(login: string) : Observable<boolean> {
         return this.http.get<boolean>(this.url + 'checkLoginUnique', {params: {login: login}});
     }
 
@@ -50,7 +51,7 @@ export class AuthorizationService extends BaseService {
         return (token != null) && !this.jwtHelper.isTokenExpired(token);
     }
 
-    login(credentials: Credentials): Observable<boolean> {
+    public login(credentials: Credentials): Observable<boolean> {
         return this.http
             .post<JwtModel>(this.url + 'login', credentials)
             .pipe(
@@ -68,7 +69,18 @@ export class AuthorizationService extends BaseService {
             )
     }
 
-    loginUser(jwt: JwtModel) {
+    public logout() {
+        localStorage.removeItem("jwt");
+    }
+
+    public getUserName() {
+        const token = localStorage.getItem("jwt");
+
+        return (token == null)? null : this.jwtHelper.decodeToken(token).name;
+    }
+
+
+    private loginUser(jwt: JwtModel) {
         const token = jwt.jwt;
         localStorage.setItem("jwt", token);
     }

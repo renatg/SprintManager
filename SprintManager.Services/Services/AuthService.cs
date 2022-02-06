@@ -43,7 +43,10 @@ public class AuthService : IAuthService
             return null;
         }
 
-        return new JwtDto { JWT = GetJwt(identity) };
+        return new JwtDto
+        {
+            JWT = GetJwt(identity),
+        };
     }
 
     public async Task<List<RoleDto>> GetAllRolesAsync()
@@ -68,14 +71,15 @@ public class AuthService : IAuthService
             
         var claims = new List<Claim>
         {
-            new Claim(ClaimsIdentity.DefaultNameClaimType, credentials.Login),
+            new Claim("name", user.Login),
+            new Claim("email", user.email),
+            new Claim("role", user.Role.Name)
         };
         
-        claims.Add(new Claim("role", user.Role.Name));
-            
         ClaimsIdentity claimsIdentity =
             new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
                 ClaimsIdentity.DefaultRoleClaimType);
+
         return claimsIdentity;
     }
 

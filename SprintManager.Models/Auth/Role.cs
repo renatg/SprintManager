@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace SprintManager.Models.Auth;
 
 public class Role
